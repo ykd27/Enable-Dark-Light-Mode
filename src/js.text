@@ -1,0 +1,535 @@
+export const name="yogendra";
+export const age= 20;
+export const d="asdgfg";
+
+export default d;
+
+
+
+import React from 'react'
+
+export default function App() {
+  return (
+    <div>
+      {header}{header}{main}{footer}
+    </div>
+  )
+}
+const headerStyle={
+  border:'2px solid yellow',
+  backgroundColor:'green',
+}
+const header=(
+  <header style={headerStyle}>
+    <h1>Hello</h1>
+
+  </header>
+)
+const main=(
+  <main>
+    <h2>This is my main</h2>
+  </main>
+)
+const footer=(
+  <footer>
+     <p>Copyright with own</p>
+  </footer>
+)
+
+
+
+{
+  
+import React from 'react'
+import Section from './components/Section'
+
+
+export default function App() {
+  let A=["Ram","Shyam","Radheshyam"]
+  let data={
+    welcome:'hello',
+    title:'ji'
+  }
+  const sayhi=()=>{
+    alert('hi')
+  }
+  
+  return (
+    <div>
+      hello
+      
+      <Section name={A} data={data} text='sayhi' onClick={sayhi} />
+    </div>
+  )
+}
+
+import React from 'react'
+
+export default function Section(props) {
+  
+  return (
+    <div>
+      {props.name.map((x)=><ul><li>{x}</li></ul>)}
+      {props.data.welcome}
+      {props.data.title}
+      <button onClick={props.onClick}>{props.text}</button>
+    </div>
+  )
+}
+}
+
+
+
+{
+  import React from 'react'
+import Classabout from './components/Classabout'
+
+export default function App() {
+  return (
+    <div>
+      <Classabout name='Hello' age='20'/>
+    </div>
+  )
+}
+
+import React, { Component } from 'react'
+
+export default class Classabout extends Component {
+  render() {
+    return (
+      <div>
+        {this.props.name}
+        {this.props.age}
+      </div>
+    )
+  }
+}
+
+}
+
+
+
+
+{
+  import React from 'react'
+import Number from './components/Number'
+
+export default function App() {
+  const num=[1,2,3,4,5,6]
+  return (
+    <div>
+      <Number numbers={num}/>
+      <Number numbers={['a','b','c']}/>
+    </div>
+  )
+}
+
+import React from 'react'
+
+export default function Number({numbers}) {
+    const Numb=numbers.map((x)=><li>{x}</li>)
+  return (
+    <div>{ Numb}</div>
+  )
+}
+
+}
+
+
+{
+  import React from 'react'
+import Number from './components/Number'
+
+export default function App() {
+  const num=[
+    ['html','css','js'],
+    ['a',1],
+    ['b',2]
+  ]
+  return (
+    <div>
+     <Number skills={num}/>
+    </div>
+  )
+}
+import React from 'react'
+
+ const Skill = ({skill})=>
+ <li>{skill[0]} {skill[1]}</li>
+
+export default function Number({skills}) {
+  const skillslist = skills.map((x)=> <Skill skill={x}/>)
+  
+  return (
+    <div>
+      {skillslist}
+    </div>
+  )
+}
+import React from 'react'
+
+ const Skill = ({skill :[tech,level]})=>
+ <li>{tech} {level}</li>
+
+export default function Number({skills}) {
+  const skillslist = skills.map((x)=> <Skill skill={x}/>)
+  
+  return (
+    <div>
+      {skillslist}
+    </div>
+  )
+}
+
+import React from 'react'
+
+ 
+
+export default function Number({skills}) {
+  const skillslist = skills.map((x)=> 
+  x.map((y)=><li>{y}</li>))
+  
+  return (
+    <div>
+      {skillslist}
+    </div>
+  )
+}
+
+
+}
+
+
+{
+
+  import React from 'react'
+import Number from './components/Number'
+
+export default function App() {
+  //const num=[
+   // ['html','css','js'],
+    //['a',1],
+    //['b',2]
+ // ]
+
+ const students=[
+  {id:1,name:"Yogendra",skills:["html","java","css"]},
+  {id:2,name:"yogi",skills:["c++","DSA","js"]}
+ ]
+  return (
+    <div>
+     <Number students={students}/>
+    </div>
+  )
+}
+import React from 'react'
+
+
+
+export default function Number(students) {
+
+
+  return (
+    <>
+      <div>
+        {students.map((a) => {
+          return (
+            <>
+              <h2>Name:{a.name}</h2>
+              {a.skills.map((b) => {
+                return (
+                  <h3>skills:{b}</h3>
+                )
+              }
+              )}
+            </>
+          )
+        })}
+      </div>
+    </>
+  )
+}
+}
+
+
+
+{
+  import React from 'react'
+import Map from './components/Map'
+
+
+export default function App() {
+  
+ 
+  return (
+    <div>
+     <Map/>
+    </div>
+  );
+}
+import React from 'react'
+
+export default function Map() {
+    const students = [
+        ["Name","Subject","Marks","Cgpa",],
+        ["Yogendra","Cse", 95,8.01,["html","java","css"]],
+        ["Adfar","Dev",100,8,["c++","DSA","js"]],
+
+    ]
+    return (
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        {students[0].map((x, i) => {
+                            return <th key={i}>{x}</th>
+                        })}
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        {students.slice(1,students.length).map((x, i) => {
+                            return (
+                                <tr key={i}>
+                                    <td>{x[0]}</td>
+                                    <td>{x[1]}</td>
+                                    <td>{x[2]}</td>
+                                    <td>{x[3]}</td>
+                                    <td>{x[4].map((x,i)=>{
+                                        return(
+                                           <td> {x} </td>
+                                        )
+                                        
+                                    })}</td>
+                                </tr>
+                            )
+                        })}
+                   
+                </tbody>
+
+            </table>
+        </div>
+    )
+}
+
+
+}
+
+
+{
+  import React from 'react'
+function Elem1(){
+  return <h1>hi hello1</h1>
+}
+function Elem2(){
+  return <h1>hi hello2</h1>
+}
+function Realoutput(props){
+  const isoutput=props.isoutput
+  if (isoutput) {
+    return<Elem1/>
+  }
+  else{
+    return<Elem2/>
+  }
+}
+export default function App() {
+  return (
+    <Realoutput  isoutput={false}/>
+  )
+}
+
+import React from 'react'
+
+export default function App() {
+  return (
+    <div>
+      {
+        (10>5)&& alert('welcome')
+      }
+    </div>
+  )
+}
+
+
+}
+
+
+
+{
+
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor(){
+    super()
+    this.state={
+      count: 0,
+    }
+  }
+  addOne=()=>{
+    this.setState({count:this.state.count+10})
+  }
+  minusOne=()=>{
+    this.setState({count:this.state.count-10})
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>{this.state.count}</h1>
+        <button onClick={()=>{this.setState({count:this.state.count+1})}}>Add</button>
+        <button onClick={()=>{this.setState({count:this.state.count-1})}}>Sub</button>
+        <button onClick={this.addOne}>Add</button>
+        <button onClick={this.minusOne}>Sub</button>
+      </div>
+    )
+  }
+}
+import React, {useState} from 'react'
+
+export default function App() {
+  const[count,setCount]=useState(0)
+  const addOne =()=>{
+    setCount(count+1)
+  }
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={()=>{setCount(count+1)}}>addOne</button>
+      <button onClick={()=>{addOne()}}>addOne</button>
+    </div>
+  )
+}
+
+}
+
+
+
+
+{
+  import React, {useState} from 'react'
+
+export default function App() {
+  const[count,setCount]=useState(0)
+  const addOne =()=>{
+    setCount(count-1)
+  }
+  return (
+    <div>
+      <button onClick={()=>{setCount(count+1)}}>Like{count}</button>
+      <button onClick={()=>{addOne()}}>UnLicke</button>
+    </div>
+  )
+}
+}
+
+
+
+
+import React, { useState } from 'react'
+
+export default function About() {
+  const [style,setmyStyle]= useState({
+    color : "black",
+    backgroundColor:"white"
+  })
+  const[btnText,setBtntext]=useState("Enable Dark Mode")
+  const toggle =()=>{
+    if(style.color==="white"){
+      setmyStyle({
+        color:"black",
+        backgroundColor:"white"
+      })
+      setBtntext("Enable Dark Mode")
+    }
+    else{
+      setmyStyle({
+        color:"white",
+        backgroundColor:"black"
+      })
+      setBtntext("Enable Light Mode")
+    }
+  }
+  return (
+    <div style={style} className='container my-3'>
+      <div className="accordion" id="accordionExample">
+  <div className="accordion-item">
+    <h2 className="accordion-header" id="headingOne">
+      <button style={style} className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div style={style} className="accordion-body">
+        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div className="accordion-item">
+    <h2 className="accordion-header" id="headingTwo">
+      <button style={style}className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+    <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div style={style}className="accordion-body">
+        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div className="accordion-item">
+    <h2 className="accordion-header" id="headingThree">
+      <button style={style} className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Accordion Item #3
+      </button>
+    </h2>
+    <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div style={style} className="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <button onClick={toggle} type="button" class="btn btn-primary">{btnText}</button>
+</div>
+    </div>
+  )
+}
+
+
+
+
+
+import React, { useState, useEffect } from "react";
+
+function QuoteGenerator() {
+  const [quote, setQuote] = useState({});
+  const [background, setBackground] = useState("#fff");
+
+  const handleClick = async () => {
+    const response = await fetch("https://api.quotable.io/random");
+    const data = await response.json();
+    setQuote(data);
+    setBackground(getRandomColor());
+  };
+
+  const getRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
+  return (
+    <div style={{ background: background }}>
+      <h1>Quote of the day</h1>
+      <p>{quote.content}</p>
+      <h4>-{quote.author}</h4>
+      <button type="button" class="btn btn-success" onClick={handleClick}>New Quote</button>
+    </div>
+  );
+}
+
+export default QuoteGenerator;
